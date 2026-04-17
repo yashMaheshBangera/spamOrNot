@@ -18,11 +18,11 @@ We are opting for the Spambase dataset from the UCI Machine learning repository.
 You can navigate to the link here to understand more about the data:
 [Spambase](https://archive.ics.uci.edu/dataset/94/spambase)
 
-## Problem Type 
+## Problem Type :round_pushpin:
 
 Since we have two classes - 0 ( Not Spam ) and 1 ( Spam ), we have the problem for 'Binary Classification'
 
-## Model Choice :
+## Model Choice :dart:
 
 We choose XGBoost as a model choice for the following reasons:
 [1] EDA ( `data/cleaning.ipynb` ) indicates a large number of zeros making the data sparse
@@ -66,18 +66,18 @@ We have used the following libraries for this project:
 2. Step 3 will do the following : 
   - Run the file `hyperparameter_tuning/optuna_tuning.py` 
   - Flow followed will be: 
-    [!ascii_diagram](icons/ascii_flow.png)                                                          
+    ![ascii_diagram](icons/ascii_flow.png)                                                          
   - You can view the best performing model from the Optuna Tuning in your `hyperparameter_tuning` folder saved as `best_model.pkl` file
   - You will also be able to see a file named `optuna_study.db` file. This is a Relational DB file ( SQLite Format ) used to persist the optimization history of an Optuna study.
 3. Step 4 will take you to a demo where you can input an email string that you want to classify. You can view examples in the images below: 
-[!spam_example](icons/spam_example.png)
-[!not_spam_example](icons/not_spam_example.png)
+![spam_example](icons/spam_example.png)
+![not_spam_example](icons/not_spam_example.png)
 4. As mentioned in Step 3, the Optuna Study creates a file named `optuna_study.db` within the `hyperparameter_tuning` dir. This file will be used to load the UI for the `optuna-dashboard` command mentioned in the `Getting Started` section. An example is shown here:
-[!optuna_study_homepage](icons/optuna_study_homepage.png)
-[!optuna_study_params](icons/optuna_study_params.png)
+![optuna_study_homepage](icons/optuna_study_homepage.png)
+![optuna_study_params](icons/optuna_study_params.png)
 
 You can also click 'Details' to get more info on each trial:
-[!optuna_trial_details](icons/optuna_trial_details.png)
+![optuna_trial_details](icons/optuna_trial_details.png)
 
 ## Conclusion :sparkles:
 
