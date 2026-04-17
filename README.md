@@ -1,6 +1,12 @@
-
 # spamOrNot :email:
 A Machine Learning use-case for detecting if an incoming email is spam or not. The problem type is of binary classification. 
+
+## Tech Stack :books:
+```
+1. Python - Programming language
+2. VSCode - local development
+3. Streamlit - UI + demo
+```
 
 ## Pre-requisites :black_nib:
 ```
@@ -12,14 +18,108 @@ We are opting for the Spambase dataset from the UCI Machine learning repository.
 You can navigate to the link here to understand more about the data:
 [Spambase](https://archive.ics.uci.edu/dataset/94/spambase)
 
+## Problem Type 
+
+Since we have two classes - 0 ( Not Spam ) and 1 ( Spam ), we have the problem for 'Binary Classification'
+
+## Model Choice :
+
+We choose XGBoost as a model choice for the following reasons:
+[1] EDA ( `data/cleaning.ipynb` ) indicates a large number of zeros making the data sparse
+[2] XGBoost or Tree-based methods provide good results for this use-case
+[3] Pre-existing framework in Python - compatible with Optuna also
+[4] As per Baseline Model Performance, XGBoost performs best as can be seen [here](https://archive.ics.uci.edu/dataset/94/spambase) under the Model Performance section.
+
 ## Get Started 🚀  
 To get started, simply run the `deploy.sh` script which will allow you to do the following:
 ```
-1. Initialize a virtual environment
+1. Create and initialize a virtual environment
 2. pip install the requirements
 3. Train the model and generate : .pkl file, Optuna dashboard
 4. Provide you with a localhost UI to test your model
+5. Provide you with a localhost UI to track your experiments
 ```
+
+## Python Libaries used :floppy_disk:
+
+We have used the following libraries for this project:
+| Package Name | Link | Purpose | 
+| ------------ | ---- | ------- |
+| ucimlrepo    | https://github.com/uci-ml-repo/ucimlrepo | Dataset is fetched using this |
+| imbalanced-learn | https://imbalanced-learn.org/stable/ | Minority oversampling |
+| scikit-learn | https://scikit-learn.org/stable/ | Splitting the Data into train, test and validation |
+| pandas       | https://pandas.pydata.org/       | For EDA, feature engineering and data processing |
+| xgboost      | https://xgboost.readthedocs.io/en/release_3.2.0/install.html | Machine Learning Model for Classification |
+| optuna       | https://optuna.org/ | Hyperparameter Optimization |
+| optuna-dashboard |  https://optuna.org/#dashboard | Experiment tracking |
+
+
+## Understanding what you deployed :pushpin:
+
+1. Steps 1 and 2 above will install libraries necessary to run the code
+2. Step 3 will do the following : 
+  - Run the file `hyperparameter_tuning/optuna_tuning.py` 
+  - Flow followed will be: 
+┌──────────────────────────────┐                                                             
+│                              │                                                             
+│       Fetch Data             │                                                             
+│                              │                                                             
+│    (UCI ML Repo Spambase)    │                                                             
+└─────────────┬────────────────┘                                                             
+              │                                                                              
+              │                                                                              
+              │                                                                              
+┌─────────────▼────────────────┐                                                             
+│                              │                                                             
+│                              │                                                             
+│    Pre-process Data          │                                                             
+│                              │                                                             
+│   1. Minority Oversampling   │                                                             
+│                              │                                                             
+│   2. Column Renaming         │                                                             
+│                              │                                                             
+│   3. Feature Engineering     │                                                             
+│                              │                                                             
+│   4. Data Splitting          │                                                             
+│                              │                                                             
+│                              │                                                             
+└─────────────┬────────────────┘                                                             
+              │                                                                              
+              │                                                                              
+              ▼                                                                              
+┌─────────────────────────────┐                                ┌────────────────────────────┐
+│                             │                                │                            │
+│     Model Training          │                                │                            │
+│          &                  │                                │     Streamlit Demo         │
+│     Hyperparameter          │                                │                            │
+│     Optimizations           │                                │     (Model Prediction)     │
+│        using the            ├────────────────────────────────►                            │
+│       Optuna libary         │                                │                            │
+│                             │                                │                            │
+│                             │                                │                            │
+│                             │                                │                            │
+│                             │                                │                            │
+└─────────────┬───────────────┘                                └────────────────────────────┘
+              │                                                                              
+              │                                                                              
+              │                                                                              
+┌─────────────▼────────────────┐                                                             
+│                              │                                                             
+│                              │                                                             
+│  Experiment Tracking         │                                                             
+│                              │                                                             
+│                              │                                                             
+└──────────────────────────────┘                                                                 
+  - You can view the best performing model from the Optuna Tuning in your `hyperparameter_tuning` folder saved as `best_model.pkl` file
+  - You will also be able to see a file named `optuna_study.db` file. This is a Relational DB file ( SQLite Format ) used to persist the optimization history of an Optuna study.
+3. Step 4 will take you to a demo where you can input an email string that you want to classify
+4. As mentioned in Step 3, the Optuna Study creates a file named `optuna_study.db` within the `hyperparameter_tuning` dir. This file will be used to load the UI for the `optuna-dashboard` command mentioned in the `Getting Started` section.
+
+## Conclusion :sparkles:
+
+We were able to tune the XGBoost Algorithm with the help of a technique called Hyperparameter Optimization. This was performed using Optuna.
+
+Results show an accuracy of 96%. 
 
 ## Author
 
