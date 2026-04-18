@@ -7,6 +7,18 @@ A Machine Learning use-case for detecting if an incoming email is spam or not. T
 2. VSCode - local development
 3. Streamlit - UI + demo
 ```
+## Skills :book:
+```
+1. Python
+2. Statistical Analysis
+3. Data Analysis
+4. Feature Engineering
+5. Machine Learning
+6. Hyperparameter Optimization
+7. XGBoost 
+8. Supervised Learning
+9. Git
+```
 
 ## Pre-requisites :black_nib:
 ```
