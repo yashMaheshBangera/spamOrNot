@@ -18,6 +18,7 @@ A Machine Learning use-case for detecting if an incoming email is spam or not. T
 7. XGBoost 
 8. Supervised Learning
 9. Git
+10. Streamlit
 ```
 
 ## Pre-requisites :black_nib:
