@@ -25,10 +25,10 @@ Since we have two classes - 0 ( Not Spam ) and 1 ( Spam ), we have the problem f
 ## Model Choice :dart:
 
 We choose XGBoost as a model choice for the following reasons:
-[1] EDA ( `data/cleaning.ipynb` ) indicates a large number of zeros making the data sparse
-[2] XGBoost or Tree-based methods provide good results for this use-case
-[3] Pre-existing framework in Python - compatible with Optuna also
-[4] As per Baseline Model Performance, XGBoost performs best as can be seen [here](https://archive.ics.uci.edu/dataset/94/spambase) under the Model Performance section.
+- EDA ( `data/cleaning.ipynb` ) indicates a large number of zeros making the data sparse
+- XGBoost or Tree-based methods provide good results for this use-case
+- Pre-existing framework in Python - compatible with Optuna also
+- As per Baseline Model Performance, XGBoost performs best as can be seen [here](https://archive.ics.uci.edu/dataset/94/spambase) under the `Model Performance` section.
 
 ## Get Started 🚀  
 To get started, simply run the `deploy.sh` script which will allow you to do the following:
@@ -40,12 +40,23 @@ To get started, simply run the `deploy.sh` script which will allow you to do the
 5. Provide you with a localhost UI to track your experiments
 ```
 
+To run the script:
+```
+git clone https://github.com/yashMaheshBangera/spamOrNot.git
+cd spamOrNot
+chmod +x deploy.sh
+./deploy.sh 
+```
+Note: for users on powershell, instead of the last 2 lines above, simply run `.\deploy.ps1`
+
+Once done, you can navigate to the streamlit UI by going to your browser and typing `http://localhost:8051`
+
 You can also view the hyperparameter optimizations using the Optuna Dashboard library.
 This can be done using the command below:
 ```
 optuna-dashboard sqlite:///optuna_study.db
 ```
-
+It will be accessible via this URL : `http://localhost:8080`
 ## Python Libaries used :floppy_disk:
 
 We have used the following libraries for this project:
@@ -55,9 +66,12 @@ We have used the following libraries for this project:
 | imbalanced-learn | https://imbalanced-learn.org/stable/ | Minority oversampling |
 | scikit-learn | https://scikit-learn.org/stable/ | Splitting the Data into train, test and validation |
 | pandas       | https://pandas.pydata.org/       | For EDA, feature engineering and data processing |
+| numpy        | https://numpy.org/               | For Log Transformation to fix skewness ( Check cleaning.ipynb) |
 | xgboost      | https://xgboost.readthedocs.io/en/release_3.2.0/install.html | Machine Learning Model for Classification |
 | optuna       | https://optuna.org/ | Hyperparameter Optimization |
 | optuna-dashboard |  https://optuna.org/#dashboard | Experiment tracking |
+| streamlit | https://streamlit.io/ | UI development and local hosting |
+
 
 
 ## Understanding what you deployed :pushpin:
@@ -78,6 +92,8 @@ We have used the following libraries for this project:
 
 You can also click 'Details' to get more info on each trial:
 ![optuna_trial_details](icons/optuna_trial_details.png)
+
+Note: You can also review the `data/cleaning.ipynb` notebook for analysis performed on data
 
 ## Conclusion :sparkles:
 

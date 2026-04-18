@@ -1,0 +1,11 @@
+ucimlrepo
+imbalanced-learn
+scikit-learn
+pandas
+numpy
+matplotlib
+seaborn
+xgboost
+optuna
+optuna-dashboard
+streamlit
